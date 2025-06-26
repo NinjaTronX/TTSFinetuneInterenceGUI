@@ -1,10 +1,18 @@
 FROM python:3.10-slim
 
-RUN apt-get update && apt-get install -y git ffmpeg espeak-ng && rm -rf /var/lib/apt/lists/*
+# Add essential build tools
+RUN apt-get update && apt-get install -y \
+    git \
+    ffmpeg \
+    espeak-ng \
+    build-essential \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
 RUN pip install git+https://github.com/coqui-ai/TTS#egg=TTS[trainers]
 RUN pip install gradio torch torchaudio
+
 
 COPY gui.py /app/gui.py
 COPY train_utils.py /app/train_utils.py
