@@ -22,7 +22,7 @@ with app:
         out = gr.Audio()
         gr.Button("Synthesize").click(fn=synthesize, inputs=text_in, outputs=out)
     with gr.Tab("Fine‑Tune"):
-        data = gr.File(label="Upload training data ZIP", file_count="single", type="file")
+        data = gr.File(label="Upload training data ZIP", file_count="single", type="filepath")
         epochs = gr.Slider(1, 50, value=5, step=1, label="Epochs")
         status = gr.Textbox(label="Training status")
         gr.Button("Start Fine‑Tune").click(fn=train, inputs=[data, epochs], outputs=status)
