@@ -18,6 +18,6 @@ COPY gui.py /app/gui.py
 COPY train_utils.py /app/train_utils.py
 WORKDIR /app
 
-EXPOSE 7860 6006
+EXPOSE 7860 6006 22
 
 CMD ["python", "gui.py"]
